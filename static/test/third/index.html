@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Test 3: General Knowledge</title>
-    <link rel="stylesheet" href="../static/css/general.css">
+    <link rel="stylesheet" href="../../../static/css/general.css">
 </head>
 <body>
     <div class="quiz-container">
@@ -25,8 +25,11 @@
                 <div class="question-text" id="questionText"></div>
                 <div class="answers-grid" id="answersGrid"></div>
             </div>
-            
-            <button class="next-btn" id="nextBtn" onclick="nextQuestion()">Next</button>
+
+            <div class="button-container">
+                <button class="next-btn" id="nextBtn" onclick="nextQuestion()">Next</button>
+                <button id="skipBtn" class="skip-btn">Skip Test</button>
+            </div>
         </div>
 
         <div id="resultScreen" class="result-screen hidden">
@@ -66,12 +69,17 @@
     </script>
 
     <script>
+        document.getElementById('skipBtn').addEventListener('click', function() {
+            document.cookie = "final=true; max-age=1200; path=/";
+            window.location.href = '/';
+        });
+
         function hasTaskCookie() {
             return document.cookie.includes('taskCompletedTest2=true');
         }
 
         if (!hasTaskCookie()) {
-            window.location.href = '../first-test';
+            window.location.href = './login/';
         }
 
         let currentQuestion = 0;
@@ -114,6 +122,7 @@
             });
 
             document.getElementById('nextBtn').style.display = 'none';
+            document.getElementById('skipBtn').style.display = 'none';
             selectedAnswer = null;
         }
 
@@ -136,6 +145,7 @@
 
             setTimeout(() => {
                 document.getElementById('nextBtn').style.display = 'block';
+                document.getElementById('skipBtn').style.display = 'block';
             }, 500);
         }
 
@@ -161,7 +171,7 @@
             } else if (percentage >= 70) {
                 feedback = 'Nice job! 🥀';
             } else if (percentage >= 50) {
-                feedback = 'Good boy! 🐶';
+                feedback = "It's okay";
             } else {
                 feedback = 'Not to say, but you might be stupid 💀';
             }
@@ -173,7 +183,7 @@
             document.cookie = "final=true; max-age=5000; path=/";
 
             setTimeout(() => {
-                window.location.href = '../home/';
+                window.location.href = '/';
             }, 100);
         }
     </script>

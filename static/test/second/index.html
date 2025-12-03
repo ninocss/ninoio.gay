@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Test 2: IQ Test</title>
-    <link rel="stylesheet" href="../static/css/iq.css">
+    <link rel="stylesheet" href="../../../static/css/iq.css">
 </head>
 <body>
     <div class="container">
@@ -21,6 +21,10 @@
             <div class="question-container">
                 <div class="question" id="question"></div>
                 <div class="answers" id="answers"></div>
+            </div>
+
+            <div class="skip-container">
+                <button id="skipButton" class="skip-btn">Skip Test</button>
             </div>
         </div>
 
@@ -60,12 +64,17 @@
     </script>
 
     <script>
+        document.getElementById('skipButton').addEventListener('click', function() {
+            document.cookie = "taskCompletedTest2=true; max-age=1200; path=/";
+            window.location.href = '../third/';
+        });
+
         function hasTaskCookie() {
             return document.cookie.includes('taskCompletedTest1=true');
         }
 
         if (!hasTaskCookie()) {
-            window.location.href = '../first-test';
+            window.location.href = '../first/';
         }
 
         let currentQuestion = 0;
@@ -185,7 +194,7 @@
                 document.cookie = "taskCompletedTest2=true; max-age=1200; path=/";
 
                 setTimeout(() => {
-                    window.location.href = '../third-test';
+                    window.location.href = '../third/';
                 }, 200);
         }
     </script>

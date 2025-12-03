@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Test 1: Aim</title>
-    <link rel="stylesheet" href="../static/css/aim.css">
+    <link rel="stylesheet" href="../../../static/css/aim.css">
 </head>
 <body>
     <div class="progress-bar">
@@ -12,12 +12,21 @@
     </div>
 
     <div class="game-area" id="gameArea"></div>
+
+    <div class="skip-container"></div>
+        <button id="skipButton" class="skip-btn">Skip Test</button>
+    </div>
     
     <footer>
         <p>&copy; 2025 ninoio. All rights reserved.</p>
     </footer>
 
     <script>
+        document.getElementById('skipButton').addEventListener('click', function() {
+            document.cookie = "taskCompletedTest1=true; max-age=1200; path=/";
+            window.location.href = '../second/';
+        });
+        
         class ContainerGame {
             constructor() {
                 this.score = 0;
@@ -25,8 +34,8 @@
                 this.containers = [];
                 this.gameArea = document.getElementById('gameArea');
                 this.spawnInterval = null;
-                this.containerLifetime = 1000;
-                this.spawnRate = 1000;
+                this.containerLifetime = 1700;
+                this.spawnRate = 1800;
                 this.maxContainers = 2;
                 this.gameRunning = true;
                 
@@ -184,7 +193,7 @@
                 document.cookie = "taskCompletedTest1=true; max-age=1200; path=/";
 
                 setTimeout(() => {
-                    window.location.href = '../second-test';
+                    window.location.href = '../second/';
                 }, 2000);
             }
         }

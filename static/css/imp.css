@@ -22,7 +22,8 @@ body {
     align-items: center;
     color: white;
     overflow-x: hidden;
-    background-color: var(--background-color);
+    background: linear-gradient(135deg, #0c0c0c 0%, #1a1a1a 50%, #0f0f23 100%);
+
 }
 
 * {
